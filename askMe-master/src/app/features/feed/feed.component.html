@@ -1,0 +1,50 @@
+<div class="card mb-4" *ngFor="let item of feed.reverse()">    
+        <div class="card-body">
+            <p class="card-text">{{item.content}}</p>
+            <div class="row all-tags">
+                <span class="question-tag" *ngFor="let tag of item.tags">{{tag.value}}</span>
+            </div>
+            <div class="row report-span" *ngIf="item.file">
+                <span>Here is your report :</span><span class="file-link">{{item.file}}</span>
+            </div>
+
+            <div class="row report-span" *ngIf="item.file">
+                <span>System has detected possibility of Diabetes, we have updated recommendations for Doctors</span>
+            </div>
+
+
+            <div class="card-body" *ngFor="let answer of item.answers">
+                <p class="answers-comment-section">{{answer.content}}</p>
+                <div class="card-footer text-muted">
+                    Answered on {{answer.date | date}} by
+                    <a>{{answer.author}}</a>
+                </div>
+            </div>
+            <button class="btn btn-info" (click)="putAnswer(item)">Add Comments &rarr;</button>
+        </div>
+        <div class="input-group" *ngIf="item.currentAnswered">
+            <textarea type="text" class="form-control" placeholder="Would love to hear your thoughts..."
+                [(ngModel)]="answer"></textarea>
+        </div>
+        <div class="input-group" *ngIf="item.currentAnswered">
+            <button class="btn btn-danger" (click)="cancelAnswer(item)">Cancel</button> &nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="submitAnswer(item)">Submit Answer</button>
+        </div>
+        <div class="card-footer text-muted">
+            Posted on {{item.date | date}} by
+            <a href="#">{{item.author}}</a>
+        </div>
+        <br/>
+    
+</div>
+
+
+<!-- Pagination -->
+<ul class="pagination justify-content-center mb-4" *ngIf="feed.length >0">
+    <li class="page-item">
+        <a class="page-link" >&larr; Older</a>
+    </li>
+    <li class="page-item disabled">
+        <a class="page-link" >Newer &rarr;</a>
+    </li>
+</ul>

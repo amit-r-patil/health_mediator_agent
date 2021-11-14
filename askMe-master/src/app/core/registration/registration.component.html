@@ -1,0 +1,202 @@
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h3 class="login-heading mb-4">Welcome to Health Mediator!</h3>
+
+                            <label for="inputPassword">Register as : </label>
+                            <div class="form-label-group">
+                                <div class="radio">
+                                    <label class="radio-inline"><input class="option-type" type="radio" name="optradio"
+                                            value="user" [(ngModel)]="userType" (change)="updateForm()">
+                                        Regular user / Patient</label>
+                                    <label class="radio-inline"><input class="option-type" type="radio" name="optradio"
+                                            value="doctor" [(ngModel)]="userType" (change)="updateForm()">
+                                        Doctor</label>
+                                    <label class="radio-inline"><input class="option-type" type="radio" name="optradio"
+                                            value="center" [(ngModel)]="userType" (change)="updateForm()">
+                                        Diagoistic Center</label>
+                                </div>
+                            </div>
+
+                            <!-- Form  -->
+                            <label for="inputEmail">Name</label>
+                            <div class="form-label-group">
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                                    required autofocus [(ngModel)]="name">
+
+                            </div>
+                            
+                            <label for="inputEmail">Preferred User Name</label>
+                            <div class="form-label-group">
+                                <input type="email" id="inputEmail" class="form-control" placeholder="User Name"
+                                    required autofocus [(ngModel)]="userName">
+
+                            </div>
+
+
+                            <label for="inputEmail" *ngIf="userType == 'user'"> ID Proof Type</label>
+                            <ng-multiselect-dropdown *ngIf="userType == 'user'" [settings]="dropdownSettings"
+                                [placeholder]="'Select ID Type'" [data]="dropdownList" (onSelect)="onItemSelect($event)"
+                                (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onDeSelectAll($event)" [(ngModel)]="userIdType"
+                                (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown>
+
+                            <label for="inputEmail" *ngIf="userType == 'user'">Gender (Male/Female)</label>
+                            <div class="form-label-group" *ngIf="userType == 'user'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter gender" required autofocus
+                                    [(ngModel)]="userGender">
+
+                            </div>
+
+                            <label for="inputEmail" *ngIf="userType == 'user'">Date of birth (yyyy-mm-dd)</label>
+                            <div class="form-label-group" *ngIf="userType == 'user'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter DOB" required autofocus
+                                    [(ngModel)]="userDOB">
+
+                            </div>
+
+                            <label for="inputEmail" *ngIf="userType == 'user'">Height (feet.inch)</label>
+                            <div class="form-label-group" *ngIf="userType == 'user'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter height" required autofocus
+                                    [(ngModel)]="userHeight">
+
+                            </div>
+
+                            <label for="inputEmail" *ngIf="userType == 'user'">Weight(kgs)</label>
+                            <div class="form-label-group" *ngIf="userType == 'user'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter weight" required autofocus
+                                    [(ngModel)]="userWeight">
+
+                            </div>
+
+                            <label for="inputEmail" *ngIf="userType == 'user'">ID Number</label>
+                            <div class="form-label-group" *ngIf="userType == 'user'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter selected ID Number" required autofocus
+                                    [(ngModel)]="userIdNumber">
+
+                            </div>
+
+                            <!-- For Doctors  -->
+                            <label for="inputEmail" *ngIf="userType == 'doctor'">Registration Number</label>
+                            <div class="form-label-group" *ngIf="userType == 'doctor'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter selected ID Number" required autofocus
+                                    [(ngModel)]="docRegNumber">
+                            </div>
+
+                            <label for="inputEmail" *ngIf="userType == 'doctor'">Qualification</label>
+                            <div class="form-label-group" *ngIf="userType == 'doctor'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter selected ID Number" required autofocus
+                                    [(ngModel)]="docQualification">
+                            </div>
+
+                            <label for="inputEmail" *ngIf="userType == 'doctor'">Hospital Name</label>
+                            <div class="form-label-group" *ngIf="userType == 'doctor'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Hospital Name" required autofocus
+                                    [(ngModel)]="docHospital">
+                            </div>
+
+                            <label for="inputEmail" *ngIf="userType == 'doctor'">Specialisation</label>
+                            <div class="form-label-group" *ngIf="userType == 'doctor'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter selected ID Number" required autofocus
+                                    [(ngModel)]="docSpecialization">
+                            </div>
+
+                            <!---->
+
+
+                            <!--  Center -->
+                            <label for="inputEmail" *ngIf="userType == 'center'">Registration Number</label>
+                            <div class="form-label-group" *ngIf="userType == 'center'">
+                                <input type="text" id="inputEmail" class="form-control"
+                                    placeholder="Enter selected ID Number" required autofocus
+                                    [(ngModel)]="centerRegNumber">
+                            </div>
+
+
+                            <label for="inputEmail" *ngIf="userType == 'center'"> Center Services</label>
+                            <ng-multiselect-dropdown *ngIf="userType == 'center'" [settings]="dropdownSettingsCenter"
+                                [placeholder]="'Select your services'" [data]="dropdownListCenter" [(ngModel)] ="centerServices"
+                                (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
+                                (onDeSelectAll)="onDeSelectAll($event)" (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown>
+
+
+                            <label for="inputEmail" *ngIf="userType != 'user'"> Days Available</label>
+                            <ng-multiselect-dropdown *ngIf="userType != 'user'" [settings]="dropdownSettingsDays"
+                                [placeholder]="'Select your availability'" [data]="listDays" [(ngModel)] ="daysAvailable"
+                                (onSelect)="onItemSelectDays($event)" (onDeSelect)="onItemDeSelectDays($event)"
+                                (onDeSelectAll)="onDeSelectAllDays($event)" (onSelectAll)="onSelectAllDays($event)">
+                            </ng-multiselect-dropdown>
+
+
+                            <!---->
+                            <label for="inputEmail" >Address</label>
+                            <div class="form-label-group">
+                                <input type="text" id="inputAddress" class="form-control" placeholder="Address" required
+                                    autofocus [(ngModel)]="address">
+
+                            </div>
+
+                            <label for="inputEmail">Contact Number</label>
+                            <div class="form-label-group" >
+                                <input type="number" id="number" class="form-control"
+                                    placeholder="Enter selected ID Number" required autofocus
+                                    [(ngModel)]="contactNumber">
+
+                            </div>
+
+                            <label for="inputEmail">Email Address</label>
+                            <div class="form-label-group">
+                                <input type="email" id="inputEmail" class="form-control"
+                                    placeholder="Enter selected ID Number" required autofocus [(ngModel)]="emailId">
+
+                            </div>
+
+                            <label for="inputPassword">Password</label>
+                            <div class="form-label-group">
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+                                    required [(ngModel)]="password">
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <button
+                                        class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                        type="submit" (click)="register()">Register</button>
+                                </div>
+
+                                <div class="text-center" class="error-message" *ngIf="errorMessage">
+                                    {{errorMessage}}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button (click)="loginToApp()"
+                                        class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                        type="submit">Back to Login</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.button-action{
+    padding-top: 10px;
+}
+
+ng-multiselect-dropdown{
+    width: 50%;
+    padding-top: 10px;
+}
+
+.patient-name{
+    margin-right: 10px;
+}
+
+.doctors-list{
+   
+    margin-bottom: 20px;
+    color: gray;
+}
+
+.file {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .file-upload{
+    position: relative;
+    overflow: hidden;
+
+    button{
+       
+    }
+  }
+
+  .report-select{
+      margin-left: 10px;
+  }
+
+  .form-level{
+      margin-top: 15px
+  }
+  .button-align{
+      margin-top: 20px;
+  }

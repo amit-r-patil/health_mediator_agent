@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <app-post (questionContent)="questionAdded($event)"></app-post>
+            </div>
+            <h4 class="my-4">Your Feed
+                <small></small>
+            </h4>
+            <span *ngIf="filteredQuestionsToAnswer.length == 0">All caught up for today!!</span>
+            <app-feed [feed]="filteredQuestionsToAnswer" (notification)="fetchNotifications($event)" ></app-feed>
+        </div>
+        <div class="col-md-4">
+            <div class="card my-4" *ngIf="userType != 'doctor'">
+                <app-tags (tag)="filterTag($event)"></app-tags>
+            </div>
+            <app-activity *ngIf="userType !='center'"[notifications] = "notifications"></app-activity>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

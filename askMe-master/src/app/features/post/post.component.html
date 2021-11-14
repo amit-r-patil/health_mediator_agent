@@ -1,0 +1,108 @@
+<p-toast position="top-right"></p-toast>
+<div class="card my-4">
+    <span class="card-header" *ngIf="userType == 'center'">Add Report</span>
+    <span class="card-header" *ngIf="userType == 'doctor'">Hello Doctor, your Patients are trying to reach
+        you!</span>
+    <span class="card-header" *ngIf="userType == 'user'">Ask Questions to your doctor</span>
+
+    <div class="card-body">
+        <!-- Center post-->
+        <div class="input-group" *ngIf="userType == 'center'">
+            <textarea type="text" class="form-control" placeholder="Enter report details..."
+                [(ngModel)]="question"></textarea>
+        </div>
+        <div class="input-group form-level">
+
+            <div class="form-group" class="patient-name" *ngIf="userType == 'center'">
+                <label for="exampleInputEmail1">Patient Name</label>
+
+                <ng-multiselect-dropdown *ngIf="userType == 'center'" [settings]="dropdownSettingsDoctors"
+                    [placeholder]="'Select Patient Name'" [data]="dropdownListPatient" [(ngModel)]="patientName"
+                    (onSelect)="onItemSelectPatient($event)" (onDeSelect)="onItemDeSelect($event)"
+                    (onDeSelectAll)="onDeSelectAll($event)" (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+            </div>
+
+            <div class="form-group" *ngIf="userType == 'center'">
+                <label for="exampleInputEmail1">Patient Email ID</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="email" [(ngModel)]="patientEmail">
+                <small id="emailHelp" class="form-text text-muted"></small>
+            </div>
+
+            <div class="form-group report-select" *ngIf="userType == 'center'">
+                <label for="exampleInputEmail1">Report Type</label>
+
+                <ng-multiselect-dropdown *ngIf="userType == 'center'" [settings]="dropdownSettings"
+                    [(ngModel)]="reportName" [placeholder]="'Select Report'" [data]="dropdownList"
+                    (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
+                    (onDeSelectAll)="onDeSelectAll($event)" (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+            </div>
+
+            <div class="input-group">
+                <span *ngIf="userType == 'center'">
+                    <span class="file btn btn-lg btn-primary" class="file-upload">
+                        <button class="btn btn-info float-left">Upload Report</button>
+                        <input type="file" class="file" name="file" (change)="addReport($event.target.files)" />
+                    </span>
+                    <span>{{fileName}}</span>
+                </span>
+            </div>
+
+            <div class="input-group button-align">
+
+                <span class="input-group" *ngIf="userType == 'center'">
+                    <button class="btn btn-info float-right" type="button" (click)="addQuestion()">Publish</button>
+                </span>
+
+            </div>
+
+
+
+            <!--  Doctor form  -->
+
+            <!-- Patient form -->
+
+            <div class="input-group doctors-list" *ngIf="userType == 'user'">
+                
+                <ng-multiselect-dropdown *ngIf="userType == 'user'" [settings]="dropdownSettingsDoctors"
+                    [placeholder]="'Select your doctor'" [data]="dropdownListDoc" (onSelect)="onItemSelect1($event)"
+                    (onDeSelect)="onItemDeSelect1($event)">
+                </ng-multiselect-dropdown>
+                <span> This is based on recommendations as per your latest reports/queries.</span>
+            </div>
+
+            <div class="input-group" *ngIf="userType == 'user'">
+                <textarea type="text" class="form-control" placeholder="Enter your question..."
+                    [(ngModel)]="question"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col">
+                <span class="input-group button-action" *ngIf="userType == 'user'">
+                    <button class="btn btn-info float-right" type="button" (click)="addQuestion()">Ask Question</button>
+                </span>
+            </div>
+
+            <div class="col">
+                <span class="input-group button-action" *ngIf="userType == 'user'">
+                    <button class="btn btn-info float-right" type="button" (click)="startVideo()">Start Video
+                        Consultation</button>
+                </span>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <div *ngIf="startCall">
+        <app-video-call></app-video-call>
+    </div>
+
+
+</div>

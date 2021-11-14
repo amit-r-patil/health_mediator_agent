@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Jack Smith",
+        "userName" : "jacksmith",
+        "about" : "Diagonistic Center with branches in 10 cities ",
+        "hobbies" : "Read, out with friends, listen to music, draw and learn new things.", 
+        "active" : ["Specialized test", "Pocket friendly"],
+        "email" : "jack@someting.com",
+        "password" : "admin",
+        "type": "center"
+    },
+    {
+        "name": "Jane Smith",
+        "userName" : "janesmith",
+        "about" : "General Physician with over 15 years of experience",
+        "hobbies" : "Read, out with friends, listen to music, draw and learn new things.", 
+        "active" : ["Medicine", "Physician"],
+        "email" : "jane@someting.com",
+        "password" : "admin",
+        "type" : "doctor"
+    },
+    {
+        "name": "John Smith",
+        "userName" : "johnsmith",
+        "about" : "System User",
+        "hobbies" : "Read, out with friends, listen to music, draw and learn new things.", 
+        "active" : ["User Questions", "General Wellness"],
+        "email" : "jane@someting.com",
+        "password" : "admin",
+        "type" : "user"
+    }
+]
